@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Status</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <style>
+        body {
+            background-color: #D2E9F2;
+        }
+
+        .navbar {
+            height: 100px;
+            padding-left: 40px;
+        }
+
+        .navbar-brand h1 {
+            font-size: 40px;
+        }
+
+
+
+        /* Remove hover effect */
+        .btn-custom:hover {
+            background-color: #153E54;
+             color: white;         /* Keep the same color on hover */
+        }
+
+        .modal-content {
+            border-radius: 10px; /* Rounded modal corners */
+        }
+
+        .custom-card {
+            border-radius: 10px; /* Rounded card corners */
+        }
+
+        /* Table borders */
+        .table {
+            border: 1px solid black; /* Border for the table */
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid black; /* Border for table cells */
+        }
+
+        .image-thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px; /* Space between thumbnails */
+        }
+
+        .image-thumbnails img {
+            width: 80px; /* Thumbnail width */
+            height: 80px; /* Thumbnail height */
+            object-fit: cover; /* Maintain aspect ratio */
+            border-radius: 5px; /* Optional: Rounded corners for thumbnails */
+            cursor: pointer; /* Indicate that they are clickable */
+        }
+        /* Custom button styling for Check button */
+.btn-custom {
+    background-color: #153E54; /* Match the navbar color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 3px 10px; /* Button padding */
+    font-size: 15px; /* Button text size */
+    width: 150px; /* Fixed width */
+    margin-top: 10px; /* Spacing above the button */
+}
+
+/* Hover effect, keep background color same */
+.btn-custom:hover {
+    background-color: #153E54; /* Maintain background color */
+    color: white; /* Keep text white */
+}
+
+/* Button style when clicked or focused */
+.btn-custom:focus, .btn-custom:active {
+    background-color: #000 !important; /* Change background color when clicked */
+    color: white !important; /* Keep text white */
+    border: none !important; /* Remove border on click */
+    box-shadow: none !important; /* Remove box-shadow */
+}
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg" style="background-color: #153E54;">
+    <a class="navbar-brand" href="/" style="font-size: 40px; color: #F0E68C;">
+        <img src="/images/Logo.jpg" alt="Logo" width="80" height="50" class="d-inline-block align-text-top">
+        Hotel Vivekanand
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="padding-right: 160px;">
+            <li class="nav-item">
+                <a class="nav-link" href="/rooms" style="color: #F0E68C;">Rooms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/services" style="color: #F0E68C;">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/experiences/1" style="color: #F0E68C;">Experiences</a>
+            </li>
+            <li class="nav-item" id="profileButton" style="display: none">
+                <a class="nav-link" href="/dashboard/profile" style="color: #F0E68C;">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/status" style="color: #F0E68C;">Status</a>
+            </li>
+            <li class="nav-item">
+                <button class="btnLogin-popup nav-button" id="loginButton" onclick="window.location.href='/login'">Login</button>
+                <button class="btnLogin-popup nav-button" id="logoutButton" style="display: none" onclick="logOutUser()">Logout</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container my-5 text-center"> <!-- Centering the content -->
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <label for="sno">Enter S.No:</label>
+        </div>
+        <div class="col-auto">
+            <input type="number" class="form-control" id="sno" style="width: 300px;"> <!-- Larger input box -->
+        </div>
+    </div>
+    <button class="btn btn-custom edit-button" onclick="check()">Check</button> <!-- Smaller Check button -->
+</div>
+
+<div class="container my-5">
+    <div class="card custom-card">
+        <div class="card-body">
+            <h3 class="card-title text-center">Lost and Found Items</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Item Type</th>
+                    <th scope="col">Hotel No</th>
+                    <th scope="col">Found Location</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Images</th>
+                </tr>
+                </thead>
+                <tbody id="lostAndFoundTableBody">
+                <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Item Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Item Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="/js/status.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>

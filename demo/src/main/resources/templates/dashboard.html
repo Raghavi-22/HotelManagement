@@ -1,0 +1,346 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>User Dashboard</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" href="/css/style.css">-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-color: #D2E9F2;-->
+<!--            min-height: 100vh;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        .content {-->
+<!--            flex: 1;-->
+<!--        }-->
+
+<!--        .service-request {-->
+<!--            display: none; /* Initially hide the service request form */-->
+<!--        }-->
+
+<!--        .small-button {-->
+<!--            font-size: 14px; /* Adjust button font size */-->
+<!--            padding: 5px 8px; /* Adjust button padding for smaller size */-->
+<!--            margin-left: 8px; /* Add some space between buttons */-->
+<!--        }-->
+
+<!--        .button {-->
+<!--            padding: 5px 8px; /* Adjust padding for the primary buttons as well */-->
+<!--        }-->
+
+<!--        /* Prevents calendar from overflowing */-->
+<!--        .form-control[type="date"] {-->
+<!--            position: relative;-->
+<!--            z-index: 10;-->
+<!--        }-->
+
+<!--        /* Ensures the container has a comfortable margin on mobile */-->
+<!--        @media (max-width: 576px) {-->
+<!--            .container {-->
+<!--                padding: 15px;-->
+<!--            }-->
+<!--        }-->
+<!--        .form-group.d-flex {-->
+<!--    display: flex;-->
+<!--    justify-content: flex-end; /* Move buttons to the right */-->
+<!--    align-items: center; /* Align buttons vertically */-->
+<!--}-->
+<!--        -->
+<!--.button {-->
+<!--    height: 45px; /* Increase the width of the button */-->
+<!--    font-size: 14px;-->
+<!--    width : 150px;-->
+<!--}-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<nav class="navbar navbar-expand-lg" style="height: 100px; padding-left: 40px; background-color: #153E54;">-->
+<!--    <a class="navbar-brand" href="/" style="font-size: 40px; color: #F0E68C;">-->
+<!--        <img src="/images/Logo.jpg" alt="Logo" width="80" height="50" class="d-inline-block align-text-top">-->
+<!--        User Dashboard-->
+<!--    </a>-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+
+<!--    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">-->
+<!--        <ul class="navbar-nav mr-auto" style="padding-right: 160px;">-->
+<!--            <li class="nav-item active">-->
+<!--                <a class="nav-link" href="/" style="color: #F0E68C;">Home</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item" id="profileButton" style="display: none">-->
+<!--                <a class="nav-link" href="/dashboard/profile" style="color: #F0E68C;">Profile</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/rooms" style="color: #F0E68C;">Rooms</a>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/feedback" style="color: #F0E68C;">Feedbacks</a>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/Bookings" style="color: #F0E68C;">Bookings</a>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--                <button class="btnLogin-popup nav-button" id="loginButton" onclick="window.location.href='/login'">Login</button>-->
+<!--                <button class="btnLogin-popup nav-button" id="logoutButton" style="display: none" onclick="logOutUser()">Logout</button>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--<div class="container mt-5 content">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-6">-->
+<!--            <h2>Book a Room</h2>-->
+<!--            <form onsubmit="return validateDates()">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="hotelId">Hotel ID</label>-->
+<!--                    <input type="text" class="form-control" id="hotelId" placeholder="Enter Hotel ID" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="checkInDate">Check-In Date</label>-->
+<!--                    <input type="date" class="form-control" id="checkInDate" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="checkOutDate">Check-Out Date</label>-->
+<!--                    <input type="date" class="form-control" id="checkOutDate" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="roomType">Room Type</label>-->
+<!--                    <select class="form-control" id="roomType">-->
+<!--                        <option value="deluxe">Deluxe</option>-->
+<!--                        <option value="super_deluxe">Super Deluxe</option>-->
+<!--                        <option value="cottage">Cottage</option>-->
+<!--                        <option value="imperial">Imperial</option>-->
+<!--                        <option value="club_rooms">Club rooms with jharokha</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="numOfGuests">Number of Guests</label>-->
+<!--                    <select class="form-control" id="numOfGuests">-->
+<!--                        <option value="1">1</option>-->
+<!--                        <option value="2">2</option>-->
+<!--                        <option value="3">3</option>-->
+<!--                        <option value="4">4</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <div class="form-group d-flex justify-content-between align-items-center mt-4">-->
+<!--                    <button type="button" class="button" onclick="checkAvailability()">Check Availability</button>-->
+<!--                    <button type="button" class="button" id="bookNowButton" onclick="bookNow()" style="display: none;">Book Now</button>-->
+<!--                    <a href="service">-->
+<!--                        <button type="button" class="btn btn-secondary small-button mt-10">Book a Service</button>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div class="col-md-6">-->
+<!--            <form id="serviceRequestForm" class="service-request">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="serviceDate">Service Date</label>-->
+<!--                    <input type="date" class="form-control" id="serviceDate" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="serviceTime">Service Time</label>-->
+<!--                    <input type="time" class="form-control" id="serviceTime" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="serviceNo">Service Number</label>-->
+<!--                    <input type="text" class="form-control" id="serviceNo" required>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
+<!--<script src="/js/dashboard.js"></script>-->
+<!--<script src="/js/home.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>-->
+<!--</body>-->
+
+<!--<footer>-->
+<!--    <p>Hotel Booking System © 2024. All rights reserved.</p>-->
+<!--</footer>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            background-color: #D2E9F2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .service-request {
+            display: none; /* Initially hide the service request form */
+        }
+
+        .small-button {
+            font-size: 14px; /* Adjust button font size */
+            padding: 5px 8px; /* Adjust button padding for smaller size */
+            margin-left: 8px; /* Add some space between buttons */
+        }
+
+        .button {
+            padding: 5px 8px; /* Adjust padding for the primary buttons as well */
+        }
+
+        /* Prevents calendar from overflowing */
+        .form-control[type="date"] {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Ensures the container has a comfortable margin on mobile */
+        @media (max-width: 576px) {
+            .container {
+                padding: 15px;
+            }
+        }
+        .form-group.d-flex {
+    display: flex;
+    justify-content: flex-end; /* Move buttons to the right */
+    align-items: center; /* Align buttons vertically */
+}
+    .button {
+    height: 45px; /* Increase the width of the button */
+    font-size: 14px;
+    width : 150px;
+}
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg" style="height: 100px; padding-left: 40px; background-color: #153E54;">
+    <a class="navbar-brand" href="/" style="font-size: 40px; color: #F0E68C;">
+        <img src="/images/Logo.jpg" alt="Logo" width="80" height="50" class="d-inline-block align-text-top">
+        User Dashboard
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="padding-right: 160px;">
+            <li class="nav-item active">
+                <a class="nav-link" href="/" style="color: #F0E68C;">Home</a>
+            </li>
+            <li class="nav-item" id="profileButton" style="display: none">
+                <a class="nav-link" href="/dashboard/profile" style="color: #F0E68C;">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/rooms" style="color: #F0E68C;">Rooms</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/feedback" style="color: #F0E68C;">Feedbacks</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/Bookings" style="color: #F0E68C;">Bookings</a>
+            </li>
+
+            <li class="nav-item">
+                <button class="btnLogin-popup nav-button" id="loginButton" onclick="window.location.href='/login'">Login</button>
+                <button class="btnLogin-popup nav-button" id="logoutButton" style="display: none" onclick="logOutUser()">Logout</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5 content">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Book a Room</h2>
+            <form onsubmit="return validateDates()">
+                <div class="form-group">
+                    <label for="hotelId">Hotel ID</label>
+                    <input type="text" class="form-control" id="hotelId" placeholder="Enter Hotel ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkInDate">Check-In Date</label>
+                    <input type="date" class="form-control" id="checkInDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkOutDate">Check-Out Date</label>
+                    <input type="date" class="form-control" id="checkOutDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="roomType">Room Type</label>
+                    <select class="form-control" id="roomType">
+                        <option value="deluxe">Deluxe</option>
+                        <option value="super_deluxe">Super Deluxe</option>
+                        <option value="cottage">Cottage</option>
+                        <option value="imperial">Imperial</option>
+                        <option value="club_rooms">Club rooms with jharokha</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numOfGuests">Number of Guests</label>
+                    <select class="form-control" id="numOfGuests">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div class="form-group d-flex justify-content-end align-items-center mt-4">
+                    <button type="button" class="button" onclick="checkAvailability()">Check Availability</button>
+                    <button type="button" class="button" id="bookNowButton" onclick="bookNow()" style="display: none;">Book Now</button>
+                    <a href="service">
+                        <button type="button" class="btn btn-secondary small-button mt-10">Book a Service</button>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form id="serviceRequestForm" class="service-request">
+                <div class="form-group">
+                    <label for="serviceDate">Service Date</label>
+                    <input type="date" class="form-control" id="serviceDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceTime">Service Time</label>
+                    <input type="time" class="form-control" id="serviceTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceNo">Service Number</label>
+                    <input type="text" class="form-control" id="serviceNo" required>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+
+<footer>
+    <p>Hotel Booking System © 2024. All rights reserved.</p>
+</footer>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>All Feedback</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            background-color: #D2E9F2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1;
+        }
+
+        .footer {
+            background-color: #D2E9F2;
+            color: black;
+            padding: 20px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Table borders */
+        .table {
+            border: 1px solid black; /* Outer border for the table */
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid black; /* Inner borders for table cells */
+        }
+
+        /* Button styling */
+        .btn {
+            width: 200px; /* Reduced button width */
+        }
+        /* Custom button styling for Add Feedback button */
+.btn-primary {
+    background-color: #153E54; /* Initial background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+}
+
+/* Button style on click/focus */
+.btn-primary:focus, .btn-primary:active {
+    background-color: #000 !important; /* Background color when clicked */
+    color: white !important; /* Ensure text remains white */
+    border: none !important; /* Remove any border */
+    box-shadow: none !important; /* Remove box shadow */
+}
+
+/* Hover effect, maintain initial background color */
+.btn-primary:hover {
+    background-color: #153E54; /* Keep the hover state same as the original */
+    border: none; /* No border on hover */
+    box-shadow: none; /* No shadow on hover */
+}
+
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg" style="height: 100px; padding-left: 40px; background-color: #153E54;">
+    <a class="navbar-brand" href="/" style="font-size: 40px; color: #F0E68C;">
+        <img src="/images/Logo.jpg" alt="Logo" width="80" height="50" class="d-inline-block align-text-top">
+        Feedbacks
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="padding-right: 160px;">
+            <li class="nav-item active">
+                <a class="nav-link" href="/" style="color: #F0E68C;">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard/profile" style="color: #F0E68C;">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/feedback" style="color: #F0E68C;">Feedbacks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Bookings" style="color: #F0E68C;">Bookings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link logout-link" onclick="logOutUser()" style="color: #F0E68C; cursor: pointer;">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2>Feedback Data</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>SL No</th>
+            <th>Review ID</th>
+            <th>Hotel No</th>
+            <th>Ratings</th>
+            <th>Comments</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Images</th>
+        </tr>
+        </thead>
+        <tbody id="feedbackTableBody"></tbody>
+    </table>
+    <!-- Modal for displaying enlarged image -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Item Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Item Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Centering the Add Feedback button -->
+    <div class="text-center">
+        <a href="/feedback_form">
+            <button class="btn btn-primary mb-2">Add Feedback</button>
+        </a>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-copyright">
+        &copy; 2024 Hotel Vivekanand. All rights reserved.
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="/js/feedbackById.js"></script>
+</body>
+</html>

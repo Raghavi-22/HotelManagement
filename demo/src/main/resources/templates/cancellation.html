@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg" style="height: 100px; padding-left: 40px; background-color: #153E54;">
+    <a class="navbar-brand" href="/" style="font-size: 40px; color: #F0E68C;">
+        <img src="/images/Logo.jpg" alt="Logo" width="80" height="50" class="d-inline-block align-text-top">
+        Hotel Vivekanand
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="padding-right: 160px;">
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/" style="color: #F0E68C;">home</a>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/rooms" style="color: #F0E68C;">Rooms</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/services" style="color: #F0E68C;">Services</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item" id="profileButton" style="display: none">-->
+<!--                <a class="nav-link" href="/dashboard/profile" style="color: #F0E68C;">Profile</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/status" style="color: #F0E68C;">Status</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <button class="btnLogin-popup nav-button" id="loginButton" onclick="window.location.href='/login'">Login</button>-->
+<!--                <button class="btnLogin-popup nav-button" id="logoutButton" style="display: none" onclick="logOutUser()">Logout</button>-->
+<!--            </li>-->
+        </ul>
+    </div>
+
+</nav>
+<div class="container my-5">
+    <h2 class="text-center">Cancel Booking</h2>
+    <form id="cancellationForm">
+        <input type="hidden" id="bookingID" />
+        <div class="form-group">
+            <label for="reason">Reason for Cancellation:</label>
+            <textarea class="form-control" id="reason" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-danger">Submit Cancellation</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/cancellation.js"></script>
+<script src="/js/home.js"></script>
+
+</body>
+</html>
+

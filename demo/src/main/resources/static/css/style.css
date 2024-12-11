@@ -1,0 +1,496 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #D2E9F2;  /* A balanced mix of #ADD8E6 and #FFFFFF */
+    color: #333;  /* Text color */
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+/* Other styles */
+.navbar-nav .nav-link {
+    font-size: 20px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.footer-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+}
+
+.footer-links ul,
+.footer-social ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-links li,
+.footer-social li {
+margin: 2.5px 5px;
+display: inline;
+}
+
+.footer-links a,
+.footer-social a {
+color: #fff;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+color: #ffd700;
+}
+
+/* Style social media icons (using Font Awesome icons) */
+.footer-social .fa {
+font-size: 24px;
+}
+
+.footer-copyright {
+text-align: center;
+margin-top: 20px;
+font-size: 14px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+.footer-content {
+flex-direction: column;
+text-align: center;
+}
+
+.footer-links,
+.footer-social {
+margin-top: 10px;
+}
+}
+
+.btnLogin-popup {
+    font-size: 20px;
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: 250ms;
+  }
+  .btnLogin-popup:hover{
+    background: rgb(89, 89, 89);
+    color: #162938;
+  }
+  .wrapper{
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /transform: scale(0);/
+    transition: transform .5s ease, height .2s ease;
+  }
+  /*.wrapper.active-popup{
+    transform: scale(1);
+  }*/
+  .wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+
+  }
+  .wrapper .form-box.login{
+    /display: none;/
+    transition: transform .18s ease;
+    transform: translateX(0);
+  }
+  .wrapper.active .form-box.login{
+    transition: none;
+    transform: translateX(-400px);
+    /display: none;/
+  }
+  .wrapper .form-box.register{
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+  }
+  .wrapper.active .form-box.register{
+    transition: transform .18s ease;
+    transform: translateX(0);
+    /display: none;/
+  }
+  /*
+  .wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938;
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+  }*/
+  .wrapper.active{
+      height: 1160px;
+   }
+  .form-box h2{
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+  }
+  .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+  }
+  .input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+  }
+  .input-box input:focus~label,
+  .input-box input:valid~label{
+    top: -5px;
+  }
+  .input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+  }
+  .input-box .icon{
+    position: absolute;
+     right: 8px;
+     font-size: 1.2em;
+     color: #162938;
+     line-height: 57px;
+  }
+  .remember-forgot{
+    font-size: .9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .remember-forgot label input{
+    accent-color: #162938;
+    margin-right: 3px;
+  }
+  .remember-forget a{
+    color: #162938;
+    text-decoration: none;
+  }
+  .remember-forget a:hover{
+    text-decoration: underline;
+  }
+  .btn{
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+  }
+.button {
+  display: inline-block;
+  margin-right: 10px; /* Adjust the margin as needed for spacing */
+  text-decoration: none; /* Remove underline */
+  background-color: #162938; /* Background color for the button */
+  color: #fff; /* Text color */
+  padding: 5px 10px; /* Adjust padding as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease; /* Add a smooth hover effect */
+}
+
+.btn:hover{
+  background-color: #000000;
+  color:#fff;
+}
+.custom-button {
+    width: 150px;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 0.9em;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Add specific margin for "Book a Service" button */
+.book-service-button {
+    margin-left: 15px; /* Adjust spacing as needed */
+}
+
+
+.login-register{
+  font-size: .9em;
+  color: #162938;
+  text-align: center;
+  font-weight: 500;
+  margin: 15px 0 10px;
+}
+.login-register p a {
+  color: #162938;
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-register p a:hover{
+  text-decoration: underline;
+}
+.form-group {
+  display: -webkit-box;
+  margin-top: 10px;
+}
+.form-group label {
+  margin-top: 10px;
+  width: 150px;
+}
+.form-group button {
+  margin-left: 10px;;
+}
+.form-group-2 {
+  display: -webkit-box;
+}
+.form-group-2 label {
+  margin-top: 10px;
+  width: 150px;
+}
+.form-group-2 button {
+  align-items: center;
+  display: flex;
+  max-width: 150px;
+}
+.hidden{
+  display: none;
+}
+
+.abtn {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed for spacing */
+    text-decoration: none; /* Remove underline */
+    background-color: #162938; /* Background color for the button */
+    color: #fff; /* Text color */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease; /* Add a smooth hover effect */
+}
+
+.abtn:hover{
+    color: #fff;
+}
+
+.part {
+    display: block;
+}
+
+.rbtn {
+    display: inline-block;
+    background-color: #162938; /* Background color for the button */
+
+    color: #fff; /* Text color */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    margin-top: 50px;
+}
+
+.rbtn:disabled {
+    background-color: #595959;
+}
+/* General Styles */
+
+
+/* Header Styling */
+/* Hotel Vivekanand Section */
+header {
+    background-color: #153E54; /* Changed to solid blue */
+    color: #F0E68C;
+    padding: 5px 0;
+    text-align: center;
+}
+
+
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* Hotel Section */
+.container {
+    padding: 20px 0;
+}
+
+.hotel-box {
+    margin: 20px 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hotel-box:hover {
+    transform: scale(1.05); /* Smooth scale on hover */
+}
+
+.hotel {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.hotel:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+/* Improved Image Styles */
+.hotel img {
+    width: 100%;
+    height: auto; /* Makes images responsive */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hotel img:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.hotel-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.hotel-info h2 {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.hotel-info .location {
+    color: #777;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.hotel-info .price {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.hotel-info button {
+    background-color: #ff7e5f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.hotel-info button:hover {
+    background-color: #feb47b;
+}
+.hotel-logo {
+    width: 110px; /* Adjust this value to control the logo size */
+    height: auto;
+}
+.background-section {
+    background-color: FFFFFF; /* Mild sky blue color */
+    padding: 20px; /* Add some padding */
+    color: #153E54; /* Optional: set text color for better visibility */
+}
+
+
+footer p {
+    margin: 0;
+    font-size: .9rem;
+    text-align: center;
+}
+.nav-button, .logout-link {
+    background-color: #153E54; /* Navbar color */
+    border: 1px solid #FFFFFF; /* Thin white border */
+    color: #F0E68C; /* Text color */
+    font-size: 1.2rem; /* Font size for visibility */
+    cursor: pointer; /* Pointer cursor */
+    padding: 8px 12px; /* Padding for button-like look */
+    text-decoration: none; /* Remove underline */
+    border-radius: 4px; /* Optional: small border radius */
+    display: inline-block; /* Display inline like a button */
+}
+
+.nav-button:hover, .nav-button:focus, .nav-button:active,
+.logout-link:hover, .logout-link:focus, .logout-link:active {
+    background-color: #153E54; /* Consistent background color */
+    color: #F0E68C; /* Consistent text color */
+    outline: none; /* Remove focus outline */
+    border: 1px solid #FFFFFF; /* Consistent white border */
+}
+.nav-item {
+    margin-right: 15px; /* Adjust the value to control the gap */
+}
+
+

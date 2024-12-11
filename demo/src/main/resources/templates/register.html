@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your external CSS file -->
+    <style>
+        .hover-shadow-container {
+            margin: auto; /* Add space above and below */
+            width: 60%; /* Modified to take 80% of the viewport width */
+            max-width: 700px; /* Set a larger max width */
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .hover-shadow-container:hover {
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+        }
+        body {
+            background-color: #D2E9F2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding : 20px 0;
+        }
+        /* Ensure form controls and form groups fit inside the container */
+        .form-control, .form-group {
+            width: 70%; /* Make sure both form controls and form groups take 100% width */
+        }
+        .form-group {
+         width: 100%;
+            margin-bottom: 15px; /* Add some space between form groups */
+        }
+    </style>
+</head>
+<body>
+
+<div class="hover-shadow-container">
+    <h2 class="text-center">Register</h2>
+    <form id="registerForm">
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" placeholder="Enter your first name" required>
+        </div>
+        <div class="form-group">
+            <label for="mname">Middle Name</label>
+            <input type="text" class="form-control" id="mname" placeholder="Enter your middle name">
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" placeholder="Enter your last name" required>
+        </div>
+        <div class="form-group">
+            <label for="flatNo">Flat Number</label>
+            <input type="text" class="form-control" id="flatNo" placeholder="Enter your flat number" required>
+        </div>
+        <div class="form-group">
+            <label>Sex</label>
+            <select class="form-control" id="sex">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" placeholder="Enter your city" required>
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" placeholder="Enter your state" required>
+        </div>
+        <div class="form-group">
+            <label for="pin">PIN Code</label>
+            <input type="text" class="form-control" id="pin" placeholder="Enter your PIN code" required>
+        </div>
+        <div class="form-group">
+            <label for="phoneNo">Phone Number</label>
+            <input type="tel" class="form-control" id="phoneNo" placeholder="Enter your phone number" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <label for="pEmail">Email Address</label>
+            <input type="email" class="form-control" id="pEmail" placeholder="Enter your email" required>
+        </div>
+        <button type="submit" class="btn btn-block" style="background-color: #007bff; color: white; border: none;">Register</button>
+    </form>
+    <div class="text-center" style="margin-top: 10px;">
+        <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/register.js"></script>
+
+</body>
+</html>

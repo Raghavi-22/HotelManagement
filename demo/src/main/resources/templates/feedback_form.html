@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for icons -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/feedback.js" defer></script>
+    <style>
+        body {
+            background-color: #D2E9F2;
+            height: 100vh;
+        }
+        .outer-box {
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        .form-control {
+            background-color: default;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+        }
+        .form-control:focus {
+            background-color: default;
+            border-color: #007BFF;
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+        label, h1 {
+            color: #000000;
+        }
+        .input-group-text {
+            background-color: #F0F0F0;
+            border: 1px solid #CCCCCC;
+        }
+    </style>
+</head>
+<body>
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-md-6 outer-box"> <!-- Added 'outer-box' class here for consistent styling -->
+        <h1 class="text-center mb-4">Submit Feedback</h1>
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="ratings">Ratings:</label>
+                <div class="input-group">
+                    <input type="number" id="ratings" name="ratings" class="form-control" min="1" max="5" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fa fa-star" aria-hidden="true"></i></span> <!-- Rating icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="hotelNo">Hotel No:</label>
+                <select id="hotelNo" name="hotelNo" class="form-control" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="images">Upload Images:</label>
+                <input type="file" id="images" name="images[]" class="form-control" accept="image/*" multiple>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" onclick="addFeedback()">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

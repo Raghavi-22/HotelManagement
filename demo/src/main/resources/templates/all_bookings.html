@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Bookings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Set background color for the entire page */
+        body {
+            background-color: #d2e9f2;
+        }
+
+        /* Style the table */
+        .table {
+            border: 2px solid black; /* Outer border */
+            background-color: #f8f9fa; /* Light gray background for table */
+        }
+        .table th, .table td {
+            border: 1px solid black; /* Inner cell borders */
+            background-color: #ffffff; /* White background for table cells */
+        }
+        .table th {
+            background-color: #e2e6ea; /* Light background for header */
+        }
+        tbody tr:hover {
+            background-color: #e2e6ea; /* Highlight row on hover */
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg" style="height: 100px; padding-left: 40px; background-color: #153E54;">
+    <a class="navbar-brand" href="/" style="font-size: 40px; color: #F0E68C;">
+        <img src="/images/Logo.jpg" alt="Logo" width="80" height="50" class="d-inline-block align-text-top">
+        Hotel Vivekananda
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="padding-right: 160px;">
+            <li class="nav-item active">
+                <a class="nav-link" href="/" style="color: #F0E68C; margin-right: 30px;">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin" style="color: #F0E68C; margin-right: 30px;">Admin Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <button class="btnLogin-popup nav-button" id="loginButton" onclick="window.location.href='/login'">Login</button>
+                <button class="btnLogin-popup nav-button" id="logoutButton" style="display: none" onclick="logOutUser()">Logout</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    <h2>All Room Bookings</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Check-In Date</th>
+            <th>Check-Out Date</th>
+            <th>Date</th>
+            <th>Booking Time</th>
+            <th>Room Type</th>
+            <th>Room No.</th>
+            <th>Cost</th>
+        </tr>
+        </thead>
+        <tbody id="bookingTableBody">
+        <!-- Room bookings rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <h2>All Service Bookings</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Date</th>
+            <th>Booking Time</th>
+            <th>Service Type</th>
+            <th>Cost</th>
+        </tr>
+        </thead>
+        <tbody id="serviceBookingTableBody">
+        <!-- Service bookings rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${year}-${month}-${day}`;
+    }
+
+    // Function to fetch bookings and update the room booking table
+    function fetchBookings(startDate, endDate) {
+        const apiUrl = startDate && endDate ?
+            `http://localhost:8080/admin/getAllBookings?startDate=${startDate}&endDate=${endDate}` :
+            'http://localhost:8080/admin/getAllBookings'; // No filter if no date range
+        axios.get(apiUrl, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then((response) => {
+            const data = response.data;
+            const bookingTableBody = document.getElementById('bookingTableBody');
+            bookingTableBody.innerHTML = ''; // Clear existing rows
+
+            if (data.length === 0) {
+                bookingTableBody.innerHTML = '<tr><td colspan="8" class="text-center">No bookings found</td></tr>';
+                return;
+            }
+
+            data.forEach((booking) => {
+                const row = document.createElement('tr');
+                const inDate = new Date(booking.checkInDate);
+                const outDate = new Date(booking.checkOutDate);
+
+                row.innerHTML = `
+                    <td>${booking.bookingID}</td>
+                    <td>${formatDate(inDate)}</td>
+                    <td>${formatDate(outDate)}</td>
+                    <td>${formatDate(new Date(booking.date))}</td>
+                    <td>${booking.time}</td>
+                    <td>${booking.typeName}</td>
+                    <td>${booking.roomNo}</td>
+                    <td>${booking.cost}</td>
+                `;
+                bookingTableBody.appendChild(row);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching bookings:', error);
+            document.getElementById('bookingTableBody').innerHTML = '<tr><td colspan="8" class="text-center">Error fetching bookings</td></tr>';
+        });
+    }
+
+    // Function to fetch service bookings and update the service bookings table
+    function fetchServiceBookings(startDate, endDate) {
+        const apiUrl = startDate && endDate ?
+            `http://localhost:8080/admin/getAllServiceBookings?startDate=${startDate}&endDate=${endDate}` :
+            'http://localhost:8080/admin/getAllServiceBookings'; // No filter if no date range
+        axios.get(apiUrl, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then((response) => {
+            const data = response.data;
+            const serviceBookingTableBody = document.getElementById('serviceBookingTableBody');
+            serviceBookingTableBody.innerHTML = ''; // Clear existing rows
+
+            if (data.length === 0) {
+                serviceBookingTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No service bookings found</td></tr>';
+                return;
+            }
+
+            data.forEach((serviceBooking) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${serviceBooking.bookingID}</td>
+                    <td>${formatDate(new Date(serviceBooking.date))}</td>
+                    <td>${serviceBooking.time}</td>
+                    <td>${serviceBooking.serviceType}</td>
+                    <td>${serviceBooking.cost}</td>
+                `;
+                serviceBookingTableBody.appendChild(row);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching service bookings:', error);
+            document.getElementById('serviceBookingTableBody').innerHTML = '<tr><td colspan="5" class="text-center">No service bookings</td></tr>';
+        });
+    }
+
+    // Call fetchBookings initially to load all bookings
+    fetchBookings();
+
+    // Call fetchServiceBookings initially to load all service bookings
+    fetchServiceBookings();
+
+</script>
+</body>
+</html>

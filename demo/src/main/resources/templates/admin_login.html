@@ -1,0 +1,95 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Updated Font Awesome CSS -->
+    <title>Admin Login Page</title>
+    <style>
+        body {
+            background-color: #D2E9F2; /* Light background color */
+        }
+        .outer-box {
+            background-color: #FFFFFF; /* White background for the container */
+            border-radius: 15px; /* Rounded corners */
+            padding: 30px; /* Padding inside the box */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+        }
+        .form-control {
+            background-color: #F0F0F0; /* Light gray for input fields */
+            border: 1px solid #CCCCCC; /* Light gray border */
+            border-radius: 5px; /* Rounded corners for input fields */
+        }
+        .form-control:focus {
+            background-color: #F0F0F0; /* Keep light gray on focus */
+            border-color: #007BFF; /* Solid blue border on focus */
+            box-shadow: none; /* No shadow on focus */
+        }
+        .btn-primary {
+            background-color: #007BFF; /* Default blue for the button */
+            border-color: #007BFF; /* Border color matches button color */
+        }
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #007BFF; /* Maintain solid blue on hover and focus */
+            border-color: #007BFF; /* Maintain solid blue border */
+        }
+        label, h2, a, p {
+            color: #000000; /* Black color for labels and text */
+        }
+        a {
+            color: #007BFF; /* Blue color for links */
+            text-decoration: none; /* Remove underline from links */
+        }
+        a:hover, a:focus {
+            color: #0056b3; /* Darker blue on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center" style="margin-top: 100px;">
+        <div class="col-md-6 outer-box"> <!-- Added outer-box class here -->
+            <h2 class="text-center">Admin Login</h2>
+            <form id="loginForm" action="#">
+                <div class="form-group">
+                    <label for="loginEmail">Email address</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span> <!-- Font Awesome envelope icon -->
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></span> <!-- Font Awesome lock icon -->
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+
+            <div class="text-center" style="margin-top: 10px;">
+                <p><a href="/login">User Login</a> | <a href="/staff-login">Staff Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/admin-login.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

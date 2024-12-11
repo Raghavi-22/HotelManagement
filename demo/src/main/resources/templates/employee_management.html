@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body style="background-color: #D2E9F2;">
+<nav class="navbar navbar-expand-lg" style="height: 100px; padding-left: 40px; background-color: #153E54;">
+    <a class="navbar-brand" href="/" style="font-size: 40px; color: #F0E68C;">
+        <img src="/images/Logo.jpg" alt="Logo" width="80" height="50" class="d-inline-block align-text-top">
+        Hotel Vivekananda
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="padding-right: 160px;">
+            <li class="nav-item active">
+                <a class="nav-link" href="/" style="color: #F0E68C; margin-right: 30px;">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin" style="color: #F0E68C; margin-right: 30px;">Admin Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <button class="btnLogin-popup nav-button" id="loginButton" onclick="window.location.href='/login'">Login</button>
+                <button class="btnLogin-popup nav-button" id="logoutButton" style="display: none" onclick="logOutUser()">Logout</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Employee Management</h2>
+            <p class="mt-3 mb-4">Manage employee records efficiently.</p> <!-- Descriptive text -->
+
+            <div class="btn-group" role="group" aria-label="Management Buttons" style="margin-top: 20px; display: flex; justify-content: center;">
+                <a href="/admin/allEmployees" class="btn text-white" style="height: 70px; width: 200px; padding-top: 20px; margin: 0 10px; background-color: #153E54; border: none; border-radius: 10px;">All Employees</a>
+                <a href="/admin/empForm" class="btn text-white" style="height: 70px; width: 200px; padding-top: 20px; margin: 0 10px; background-color: #153E54; border: none; border-radius: 10px;">Add Employee</a>
+                <a href="/admin/deleteEmp" class="btn text-white" style="height: 70px; width: 200px; padding-top: 20px; margin: 0 10px; background-color: #153E54; border: none; border-radius: 10px;">Delete Employee</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-copyright">
+        &copy; 2024 Hotel Vivekanand. All rights reserved.
+    </div>
+    <style>
+        /* Sticky footer styles */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #D2E9F2; /* Same background color */
+        }
+
+        .container {
+            flex: 1; /* Make the container grow to fill space */
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #D2E9F2; /* Same color as the background */
+            color: black;
+            padding: 20px 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
